@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title> Swift 代码格式化工具  | Wei You</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://weiyou2012.github.io/favicon.ico?v=1608389657664">
+<link rel="stylesheet" href="https://weiyou2012.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+SwiftFormat
+A command-line tool and Xcode Extension for formatting Swift code
+用于格式化 Swift代码的一个命令行工具和 Xcode扩展。
+
+
+引言
+之前的工..." />
+    <meta name="keywords" content="Xcode,代码格式,开发工具,Swift" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://weiyou2012.github.io">
+        <img src="https://weiyou2012.github.io/images/avatar.png?v=1608389657664" class="site-logo">
+        <h1 class="site-title">Wei You</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/weiyou2012" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+          <a class="social-link" href="https://twitter.com/weiyou2012" target="_blank">
+            <i class="fab fa-twitter"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      总有以后需要翻阅的记录
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://weiyou2012.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title"> Swift 代码格式化工具 </h2>
+            <div class="post-date">2020-12-19</div>
+            
+              <div class="feature-container" style="background-image: url('https://weiyou2012.github.io/post-images/swift-dai-ma-ge-shi-hua-gong-ju.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <blockquote>
+<p><a href="https://github.com/nicklockwood/SwiftFormat">SwiftFormat</a></p>
+<p>A command-line tool and Xcode Extension for formatting Swift code</p>
+<p>用于格式化 Swift代码的一个命令行工具和 Xcode扩展。</p>
+</blockquote>
+<!-- more -->
+<h2 id="引言">引言</h2>
+<p>之前的工作中，一直都是自己在维护和开发公司的 iOS项目，对于代码格式没有强制要求，但本着严格自律的工作作风，自己在写代码的时候，都是遵守模仿了<a href="https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html">Swift官方手册</a>的代码风格。而且自己也已经习惯了阅读这种格式的代码。毕竟看着美观啊！</p>
+<p>在更换了工作之后，现在的 iOS开发工作已经不是我一个人的战斗。于是问题来了。同事的项目代码并没有准守官方手册的代码风格，而且很多地方看起来就很不规范的样子。在这个方面，公司也没有做出个统一规范。这让我在看同事代码的时候就特别不舒服，有时甚至去主动修改同事的代码格式。如果真的手动去更改整个项目的代码格式风格，显然不现实。于是就萌发了找一个简单易通的 Swift代码格式工具的想法...</p>
+<p>最后找个了 <strong>SwiftFormat</strong>。</p>
+<p>这次主要记录 Xcode Extension 的安装和设置，使用很简单，可直观较快的解决代码格式问题。</p>
+<h2 id="安装与设置">安装与设置</h2>
+<p>SwiftFormat 用于 Xcode扩展的工具，是一个名叫 SwiftFormat for Xcode.app。</p>
+<figure data-type="image" tabindex="1"><img src="https://weiyou2012.github.io/post-images/1608386964111.png" alt="" loading="lazy"></figure>
+<p>我们直接在页面选择最新发布版本的 <strong>SwiftFormat.for.Xcode.app.zip</strong>下载，<a href="https://github.com/nicklockwood/SwiftFormat/releases">下载地址</a>。</p>
+<figure data-type="image" tabindex="2"><img src="https://weiyou2012.github.io/post-images/1608386898297.png" alt="" loading="lazy"></figure>
+<p>下载完成解压，获得 app。<br>
+并将 app 拖入到左边的应用程序，点击运行。<br>
+安全提示可以忽略，直接打开。</p>
+<figure data-type="image" tabindex="3"><img src="https://weiyou2012.github.io/post-images/1608386992461.png" alt="" loading="lazy"></figure>
+<p>右上角可选择 Swift语言的版本，默认为自动，可选为自己项目使用的语言版本。</p>
+<p>Swift 代码格式的规则为列表中打勾的选项，可不作调整，自行研究每个选的的作用，目前还没有汉化。</p>
+<figure data-type="image" tabindex="4"><img src="https://weiyou2012.github.io/post-images/1608387011320.png" alt="" loading="lazy"></figure>
+<p>然后在 <strong>系统偏好设置</strong>中，找到<strong>扩展</strong>，勾选 SwiftFormat.for.Xcode 下的选择框，继续查看 Xcode Source Editor 里的选项是否打勾，打勾后就完成了安装设置工作。🎉</p>
+<h2 id="使用">使用</h2>
+<p>SwiftFormat 使用很简单，会在 <strong>Editor</strong> 菜单下增加一个 <strong>SwiftFormat</strong> 的选项。</p>
+<figure data-type="image" tabindex="5"><img src="https://weiyou2012.github.io/post-images/1608387055421.png" alt="" loading="lazy"></figure>
+<ul>
+<li>Format Selection 处理选中的代码</li>
+<li>Format File 处理当前文件</li>
+</ul>
+<p>到这里，SwiftFormat的Xcode扩展工具，安装使用就已经介绍完毕，需要的小伙伴可以上手试一试啦。🎉</p>
+<h2 id="结尾">结尾</h2>
+<p>目前介绍的是 SwiftFormat界面化的 Xcode扩展，功能直接，能快速处理 Swfit代码格式，另外app 中也提供一些格式化规则的选项，用于自定义化代码格式化。</p>
+<p>使用之后，感觉几乎没有什么学习成本，便于大家的代码格式统一化。</p>
+<p>最后，如果对命令感兴趣的话，可以了解其命令行工具的使用，可在<a href="https://github.com/nicklockwood/SwiftFormat">SwiftFormat的主页</a> 查看介绍。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://weiyou2012.github.io/tag/1TvFpz8Ys/" class="tag">
+                    Xcode
+                  </a>
+                
+                  <a href="https://weiyou2012.github.io/tag/DkoTV--nO/" class="tag">
+                    代码格式
+                  </a>
+                
+                  <a href="https://weiyou2012.github.io/tag/S-sNMx4pa/" class="tag">
+                    开发工具
+                  </a>
+                
+                  <a href="https://weiyou2012.github.io/tag/p3oh7TtgT/" class="tag">
+                    Swift
+                  </a>
+                
+              </div>
+            
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'b2792d19286b5f6d9410',
+        clientSecret: 'c6bf8bf83ebd5648d9440689e297e17f0b25950f',
+        repo: 'BlogTalk',
+        owner: 'weiyou2012',
+        admin: ['weiyou2012'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
