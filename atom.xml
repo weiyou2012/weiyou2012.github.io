@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://weiyou2012.github.io</id>
     <title>Wei You</title>
-    <updated>2020-12-19T15:11:07.887Z</updated>
+    <updated>2020-12-29T14:24:44.950Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://weiyou2012.github.io"/>
     <link rel="self" href="https://weiyou2012.github.io/atom.xml"/>
@@ -10,6 +10,125 @@
     <logo>https://weiyou2012.github.io/images/avatar.png</logo>
     <icon>https://weiyou2012.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Wei You</rights>
+    <entry>
+        <title type="html"><![CDATA[ Xcode 中的 Swift 代码注释]]></title>
+        <id>https://weiyou2012.github.io/post/xcode-zhong-de-swift-dai-ma-zhu-shi/</id>
+        <link href="https://weiyou2012.github.io/post/xcode-zhong-de-swift-dai-ma-zhu-shi/">
+        </link>
+        <updated>2020-12-29T13:53:56.000Z</updated>
+        <summary type="html"><![CDATA[<p>写代码也有一段时间了，代码中注释也是写了不老少，但在和同事一起开发的时候才发现了问题，大家注释的样子各成一体，没有能写出苹果官方注释的样子。大概就是注释的语法上出了问题，于是自己就主动学习了下 Swift代码的注释语法格式，记录下自己学到的东西。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>写代码也有一段时间了，代码中注释也是写了不老少，但在和同事一起开发的时候才发现了问题，大家注释的样子各成一体，没有能写出苹果官方注释的样子。大概就是注释的语法上出了问题，于是自己就主动学习了下 Swift代码的注释语法格式，记录下自己学到的东西。</p>
+<!-- more -->
+<h2 id="注释语法">注释语法</h2>
+<h3 id="单行注释">单行注释</h3>
+<pre><code class="language-swift">// 单行注释
+</code></pre>
+<ul>
+<li>单行注释主要出现在.swfit 文件的顶部，记录代码文件的一些信息。</li>
+<li>另外也出现在代码中，用于记录对于单行代码的解释。</li>
+</ul>
+<h3 id="单行文档注释">单行文档注释</h3>
+<pre><code class="language-swift">/// 单行文档注释
+</code></pre>
+<p>当我们用 ⌥ + 鼠标左键，点击代码时，可以查看属性或者方法的文档页面，更直观的查看代码的文档说明。</p>
+<p>多数时候，我们都在使用这个方法注释类，结构体、枚举，属性，方法</p>
+<h3 id="多行注释">多行注释</h3>
+<pre><code class="language-swift">/*
+	第一行注释
+	第二行注释
+	第三行注释
+*/
+</code></pre>
+<p>在代码中，如果连续很多个单行注释，可换成多行注释，避免写很多单行注释，造成多余代码。</p>
+<h3 id="多行文档注释">多行文档注释</h3>
+<pre><code class="language-swift">/**
+	多行文档注释
+*/
+</code></pre>
+<p>可以在多行文档注释中加入一些MD语法，就可以达到文档页面的特殊样式。</p>
+<h2 id="注释中的标记语法">注释中的标记语法</h2>
+<p>在 Xcode中写 Swift代码程序注释，本身就有其支持的 MarKDown 语法。还有一些特殊的标记，可以在右边mini 代码预览中展示，也可以在最上边的文件路径层次里查看。</p>
+<h3 id="标记">标记</h3>
+<pre><code class="language-swift">// MARK: 这个是标示
+// MARK: - 这个是带分割线的标示
+</code></pre>
+<p>用于标记代码结构，而且在Xcode 中右边mini map 中可以看到</p>
+<pre><code class="language-swift">// TODO: 这个下边要写一些代码，实现某个目的。
+// TODO: - 多了一条分割线。
+</code></pre>
+<p>这个用来提示下一步编写代码的目的或者实现逻辑。</p>
+<pre><code class="language-swift">// FIXME: 这个地方要修理一下。
+</code></pre>
+<p>提示这个地方的代码需要修复，存在某种需要修复问题。</p>
+<h3 id="文档注释">文档注释</h3>
+<p>在开发中，我们可以用 快捷键<code>⌥ + ⌘ + /</code> ，来为代码生成文档注释<code>///</code>。</p>
+<p>其中 <code>- Parameters:</code>写法，还有<code>- Throws:</code>，<code>- Returns:</code>写法，都是特殊的关键字符格式，会在文档注释的页面特别显示。</p>
+<pre><code class="language-swift">/// 两个整数相加
+/// - Parameters:
+///   - a: 加号左边的整数
+///   - b: 加号右边的整数
+/// - Throws: 抛出错误，此方法不抛出错误，只为另外演示注释用法。
+/// - Returns: 和
+///
+/// 这个是一个两个整数的相加方法，用于求两个整数的和。
+func add(a: Int, b: Int) throws -&gt; Int {
+    return a + b
+}
+</code></pre>
+<p>可以在下图中的看到生成的文档样式，那些关键字起到一些标题的作用，让文档更清晰明了。而且是 Xcode 根据注释语法，自动生成的文档说明。</p>
+<figure data-type="image" tabindex="1"><img src="https://weiyou2012.github.io/post-images/1609250290493.png" alt="" loading="lazy"></figure>
+<p>另外，在多行文档注释中，还可以使用 MarkDown语法进行书写。还有一些其他的关键字，也可在注释文档中使用。可参照下边代码，或者自行学习MarkDown语法。</p>
+<pre><code class="language-swift">    /**
+        两个整数相加
+        # 加法（标题一）
+        这个方法执行整数的加法运算。
+        ## 加法运算（标题二）
+        想加个试试看
+     
+        中间隔着一个横线
+        ***
+     
+		代码块的*使用*方法:
+		```
+            let num = func add(a: 1, b: 2)
+            // print 3
+        ```
+            
+        - c: 参数一
+        - d: 参数二
+        - f: 参数三
+     
+        - Parameters:
+            - a: 加号左边的整数
+            - b: 加号右边的整数
+        - Throws: 抛出错误，此方法不抛出错误，只为另外演示注释用法。
+        - Returns: 和
+     
+        - Important: 注意这个方法的参数。
+        - Version: 1.0.0
+        - Authors: Wei You, Fang Wang
+        - Copyright: 版权所有
+        - Date: 2020-12-28
+        - Since: 1949-10-01
+        - Attention: 加法的运算
+        - Note: 提示一下，用的时候请注意类型。
+        - Remark: 从新标记一下这个方法。
+        - Warning: 警告，这是一个没有内容的警告。
+        - Bug: 标记下bug问题。
+        - TODO: 要点改进的代码
+        - Experiment: 试验点新玩法。
+        - Precondition: 使用方法的前置条件
+        - Postcondition：使用方法的后置条件
+        - Requires: 要求一些东西，才能用这个方法。
+        - Invariant: 不变的
+     */
+    func add(a: Int, b: Int) throws -&gt; Int {
+        return a + b
+    }
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ Swift 代码格式化工具 ]]></title>
         <id>https://weiyou2012.github.io/post/swift-dai-ma-ge-shi-hua-gong-ju/</id>
